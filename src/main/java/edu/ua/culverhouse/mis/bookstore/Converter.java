@@ -13,7 +13,7 @@ public class Converter {
         return getObjectReader().readValue(json);
     }
 
-    public static String toJsonString(List<Book> obj) throws JsonProcessingException {
+    public static String toJsonString(Book obj) throws JsonProcessingException {
         return getObjectWriter().writeValueAsString(obj);
     }
 
@@ -23,7 +23,7 @@ public class Converter {
     private static void instantiateMapper() {
         ObjectMapper mapper = new ObjectMapper();
         reader = mapper.readerFor(new TypeReference<List<Book>>(){});
-        writer = mapper.writerFor(new TypeReference<List<Book>>(){});
+        writer = mapper.writerFor(Book.class);
     }
 
     private static ObjectReader getObjectReader() {
