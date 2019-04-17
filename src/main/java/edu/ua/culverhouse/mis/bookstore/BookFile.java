@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.*;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
@@ -61,6 +62,18 @@ class BookFile {
             client.close();
         }
 
+    }
+
+    public static void DeleteBook(Book myBook, String cwid) throws Exception {
+        try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
+
+            HttpDelete httpDelete = new HttpDelete("http://159.89.235.64:3000/books/" + cwid + "/" + myBook.getId());
+            System.out.println("Executing request " + httpDelete.getRequestLine());
+
+            // Create a custom response handler
+            
+            CloseableHttpResponse response = httpclient.execute(httpDelete);
+        }
     }
 
 }

@@ -79,8 +79,9 @@ public class Book {
 
     @Override
     public String toString() {
-        return _id + "\n" + cwid + "\n" + cover + "\n" + isbn + "\n" + title + "\n" + author + "\n" + copies + "\n"
-                + genre + "\n" + length;
+        return title;
     }
+
+    
 
 }
